@@ -3,7 +3,7 @@
  * @Author: qiuguixian
  * @Date: 2021-02-01 11:59:25
  * @LastEditors: qiuguixian
- * @LastEditTime: 2021-02-01 17:47:06
+ * @LastEditTime: 2021-02-03 10:50:34
 -->
 
 # music_app
@@ -37,3 +37,5 @@ fastclick ===>处理手机延迟 300ms 的问题
 babel-polyfil==>es6 的补丁
 
 postcss-pxtorem=>自动将 px 转成 rem 为单位，实现自适应
+
+jsonp 原理、jsonp 请求的封装
