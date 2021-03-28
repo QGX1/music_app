@@ -3,7 +3,7 @@
  * @Author: qiuguixian
  * @Date: 2021-02-01 17:16:46
  * @LastEditors: qiuguixian
- * @LastEditTime: 2021-03-07 17:51:43
+ * @LastEditTime: 2021-03-28 20:54:29
  */
 import originJSONP from 'jsonp' // 原生的jsonp
 
@@ -18,7 +18,8 @@ export default function jsonp(url, data, option) {
       if (!err) {
         resolve(data)
       } else {
-        reject(err)
+        console.log('请求出错了')
+        // reject(err)
       }
     })
   })

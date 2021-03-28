@@ -3,13 +3,15 @@
  * @Author: qiuguixian
  * @Date: 2021-02-01 11:59:25
  * @LastEditors: qiuguixian
- * @LastEditTime: 2021-02-02 14:22:12
+ * @LastEditTime: 2021-03-28 23:52:01
 -->
 
 <template>
   <div id="app">
     <MHeader></MHeader>
-    <router-view />
+    <keep-alive v-if="$route.meta.isKeepAlive">
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 

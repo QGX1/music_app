@@ -3,28 +3,58 @@
  * @Author: qiuguixian
  * @Date: 2021-02-02 15:05:04
  * @LastEditors: qiuguixian
- * @LastEditTime: 2021-03-07 17:53:21
+ * @LastEditTime: 2021-03-28 21:49:41
 -->
 <template>
-  <div class="recommend">推荐1111</div>
+  <div class="recommend">
+    <section class="swiper-contain"></section>
+  </div>
 </template>
 
 <script>
 import { getRecommend } from 'api/recommend'
+import { Swiper } from 'assets/js/swiper'
 export default {
   name: 'recommend',
   data() {
     return {}
   },
-  created() {
-    this._getRecommend()
+  created() {},
+  mounted() {
+    this._getRecommend() // 获取图片轮播的数据
   },
-  mounted() {},
 
   methods: {
     _getRecommend() {
-      getRecommend().then((res) => {})
+      getRecommend().then(res => {})
+      let options = {
+        parentDom: '.swiper-contain',
+        imgs: [
+          require('assets/image/1.jpg'),
+          require('assets/image/2.jpg'),
+          require('assets/image/3.jpg'),
+          require('assets/image/4.jpg')
+        ],
+        imgClassName: 'swiper-img', // 自定义图片类名
+        autoSwitch: {
+          state: true, // 是否自动跳转
+          duration: 2000 // 多少秒自动切换图片
+        },
+        upDownWitch: {
+          state: true // 上下切换图片
+        }
+      }
+      let mySwiper = new Swiper(options)
+      console.log(mySwiper)
     }
   }
 }
 </script>
+<style scoped>
+.swiper-contain {
+  width: 100%;
+  height: 9rem;
+  background: aqua;
+  margin-top: 0.1rem;
+}
+</style>

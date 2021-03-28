@@ -15,6 +15,8 @@
     "babel-runtime": "^6.26.0",
     "fastclick": "^1.0.6",
     "jsonp": "^0.2.1",
+    "less": "^4.1.1",
+    "less-loader": "^8.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
