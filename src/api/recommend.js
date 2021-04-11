@@ -3,10 +3,11 @@
  * @Author: qiuguixian
  * @Date: 2021-03-07 17:07:29
  * @LastEditors: qiuguixian
- * @LastEditTime: 2021-03-07 17:52:11
+ * @LastEditTime: 2021-04-11 20:53:11
  */
 import jsonp from 'assets/js/jsonp.js'
 import { commonParams, options } from './config'
+import axios from 'axios'
 export function getRecommend() {
   const url =
     'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg'
@@ -17,4 +18,28 @@ export function getRecommend() {
     // 请求qq音乐必须传的参数，接口需求
   })
   return jsonp(url, data, options)
+}
+
+export function getDiscList() {
+  // const url = '/api/getDiscList'
+  let url = '/qqApi/api/getDiscList'
+  const data = Object.assign({}, commonParams, {
+    platform: 'yqq',
+    hostUin: 0,
+    sin: 0,
+    ein: 29,
+    sortId: 5,
+    needNewCode: 0,
+    categoryId: 10000000,
+    rnd: Math.random(),
+    format: 'json'
+  })
+
+  return axios
+    .get(url, {
+      params: data
+    })
+    .then(res => {
+      return Promise.resolve(res.data)
+    })
 }

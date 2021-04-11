@@ -3,7 +3,7 @@
  * @Author: qiuguixian
  * @Date: 2021-02-02 15:05:04
  * @LastEditors: qiuguixian
- * @LastEditTime: 2021-03-28 21:49:41
+ * @LastEditTime: 2021-04-11 21:55:55
 -->
 <template>
   <div class="recommend">
@@ -12,17 +12,22 @@
 </template>
 
 <script>
-import { getRecommend } from 'api/recommend'
+import { getRecommend, getDiscList } from 'api/recommend'
 import { Swiper } from 'assets/js/swiper'
 export default {
   name: 'recommend',
   data() {
-    return {}
+    return {
+      musicList: []
+    }
   },
   created() {},
   mounted() {
     this._getRecommend() // 获取图片轮播的数据
+    this._getDiscList() // 获取歌单列表
   },
+  // 销毁，清除定时器
+  destroyed() {},
 
   methods: {
     _getRecommend() {
@@ -46,6 +51,11 @@ export default {
       }
       let mySwiper = new Swiper(options)
       console.log(mySwiper)
+    },
+    _getDiscList() {
+      getDiscList().then(res => {
+        this.musicList = res.data.list
+      })
     }
   }
 }

@@ -1,16 +1,30 @@
+/*
+ * @Descripttion: 文本描述
+ * @Author: qiuguixian
+ * @Date: 2021-03-28 16:13:56
+ * @LastEditors: qiuguixian
+ * @LastEditTime: 2021-04-11 21:23:50
+ */
 'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-
 module.exports = {
   dev: {
-
+    env: require('./dev.env'),
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/qqApi': {
+        target: 'http://localhost:9999',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/qqApi': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -44,6 +58,8 @@ module.exports = {
   },
 
   build: {
+    env: require('./prod.env'),
+    port: 3000,
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
